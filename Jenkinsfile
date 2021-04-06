@@ -1,32 +1,41 @@
-pipeline {
-  agent {
-    docker {
-      image 'maven:3.6.3-openjdk-11'
-    }
+pipleline {
 
-  }
-  stages {
-    stage('build') {
-      steps {
-        sh 'mvn compile'
-      }
-    }
+   agent any
 
-    stage('test') {
-      steps {
-        sh 'mvn clean test'
-      }
-    }
+   tools{
 
-    stage('package') {
-      steps {
-        sh 'mvn package -DskipTests'
-        archiveArtifacts '**/target/*war'
-      }
-    }
+     maven 'Maven 3.6.3'
 
-  }
-  tools {
-    maven 'Maven 3.6.3'
-  }
+ }
+
+  stages{
+
+   stage('build'){
+
+    steps {
+      sh 'mvn complie'
+}
+}
+  stage('build'){
+
+    steps {
+      sh 'mvn complie'
+}
+}
+  stage('test'){
+
+    steps {
+      sh 'mvn clean test'
+}
+}
+
+ stage('package'){
+
+    steps {
+      sh 'mvn package -DskipTests'
+}
+}
+}
+
+
 }
