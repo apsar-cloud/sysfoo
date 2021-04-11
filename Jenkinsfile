@@ -9,7 +9,7 @@ pipeline {
         stage('Build') {
             steps {
                 echo 'Building..'
-                sh 'mvn comiple'
+                sh 'mvn compile'
             }
             }
 
