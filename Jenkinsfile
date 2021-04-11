@@ -9,7 +9,7 @@ pipeline {
         stage('Build') {
             steps {
                 echo 'Building..'
-                sh 'mvn complie'
+                sh 'mvn compile'
             }
             }
 
@@ -20,7 +20,7 @@ pipeline {
 				
             }
         }
-        stage('Pachage') {
+        stage('Package') {
             steps {
                 echo 'Packaging....'
                 sh 'mvn package -DskipTests'
