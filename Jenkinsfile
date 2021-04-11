@@ -1,41 +1,31 @@
-pipleline {
+pipeline {
+    agent any
 
-   agent any
+    tools {
+      Maven 'Maven 3.6.3' 
+    }
 
-   tools{
+    stages {
+        stage('Build') {
+            steps {
+                echo 'Building..'
+                sh 'mvn comiple'
+            }
+            }
 
-     maven 'Maven 3.6.3'
-
- }
-
-  stages{
-
-   stage('build'){
-
-    steps {
-      sh 'mvn complie'
-}
-}
-  stage('build'){
-
-    steps {
-      sh 'mvn complie'
-}
-}
-  stage('test'){
-
-    steps {
-      sh 'mvn clean test'
-}
-}
-
- stage('package'){
-
-    steps {
-      sh 'mvn package -DskipTests'
-}
-}
-}
-
-
+        stage('Test') {
+            steps {
+                echo 'Testing'
+                sh 'mvn test'
+				
+            }
+        }
+        stage('Pachage') {
+            steps {
+                echo 'Packaging....'
+                sh 'mvn package -DskipTests'
+		archiveArtifacts artifacts: '**/target/*.war', fingerprint: true
+            }
+        }
+    }
 }
